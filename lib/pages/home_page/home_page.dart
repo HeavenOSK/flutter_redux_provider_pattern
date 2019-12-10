@@ -27,11 +27,14 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text(
+          children: [
+            const Text(
               'You have pushed the button this many times:',
             ),
-            _CounterText(),
+            Text(
+              '${model.counter}',
+              style: Theme.of(context).textTheme.display1,
+            ),
           ],
         ),
       ),
@@ -68,19 +71,6 @@ class HomePage extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-    );
-  }
-}
-
-class _CounterText extends StatelessWidget {
-  const _CounterText({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final model = Provider.of<Model>(context);
-    return Text(
-      '${model.counter}',
-      style: Theme.of(context).textTheme.display1,
     );
   }
 }
