@@ -18,7 +18,7 @@ void main() {
         initialState: AppState.initialize(),
         middleware: [
           /// counterの加算・減算処理を行うmiddlewareを配置します。
-          /// [...]　記法を使用して展開します。
+          /// リスト内で展開するために、[...]　記法を使用しています。
           ...counterMiddleware(),
         ],
       ),

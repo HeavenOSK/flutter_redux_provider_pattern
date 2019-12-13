@@ -17,6 +17,8 @@ import '../app_state.dart';
 /// 必要があります。
 Reducer<AppState> counterReducer = combineReducers(
   [
+    /// 加算結果を[CounterAddSucceededAction]で受け取りAppStateの[counter]プロパティを
+    /// 更新します。
     ReducerOf<AppState, CounterAddSucceededAction>(
       callback: (state, action) {
         return state.copyWith(
@@ -24,6 +26,9 @@ Reducer<AppState> counterReducer = combineReducers(
         );
       },
     ),
+
+    /// 減産結果を[CounterSubtractSucceededAction]で受け取りAppStateの[counter]プロパティを
+    /// 更新します。
     ReducerOf<AppState, CounterSubtractSucceededAction>(
       callback: (state, action) {
         return state.copyWith(
