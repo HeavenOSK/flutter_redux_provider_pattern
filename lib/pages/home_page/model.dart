@@ -14,9 +14,8 @@ extension _CounterState on AppState {
 class Model extends ChangeNotifier with SubscriptionHolderMixin {
   Model({
     @required this.store,
-  }) : assert(store != null) {
-    _initializeCounter();
-
+  })  : assert(store != null),
+        counter = store.state.counter {
     subscriptionHolder.add(
       store.onChange.listen(
         (state) {
@@ -27,10 +26,6 @@ class Model extends ChangeNotifier with SubscriptionHolderMixin {
         },
       ),
     );
-  }
-
-  void _initializeCounter() {
-    counter = store.state.counter;
   }
 
   final Store<AppState> store;
