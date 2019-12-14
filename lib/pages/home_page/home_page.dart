@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'counter_text/counter_text.dart';
 import 'model.dart';
 
 /// このexampleの唯一の画面です。
@@ -22,7 +23,7 @@ class HomePage extends StatelessWidget {
   /// その他の例を見たい方は, mono0926さんの[google-tasks-clone](https://github.com/mono0926/google-tasks-clone)
   /// を参考にするとよいと思います。
   static Widget withDependencies(BuildContext context) {
-    return ChangeNotifierProvider(
+    return Provider(
       create: (_context) => Model(
         /// [Store]をモデルに渡しています。
         /// Providerの createメソッド内では[XXXX.of]メソッドを使用できないので、
@@ -53,10 +54,7 @@ class HomePage extends StatelessWidget {
             ///
             /// さらにパフォーマンスを向上させたい場合は別Widgetに切り出して、
             /// 個別に更新をできるようにすればよいです。
-            Text(
-              '${model.counter}',
-              style: Theme.of(context).textTheme.display1,
-            ),
+            CounterText.withDependencies(context),
           ],
         ),
       ),
