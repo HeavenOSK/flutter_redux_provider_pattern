@@ -8,7 +8,7 @@ import 'redux/redux.dart';
 
 void main() {
   runApp(
-    /// Providerを使って、AppStateを保持するStoreを配置します。
+    /// Providerを使って、AppStateを保持するStoreを配置しています。
     Provider(
       create: (context) => Store<AppState>(
         /// AppStateを更新するためのReducerを設定します。
