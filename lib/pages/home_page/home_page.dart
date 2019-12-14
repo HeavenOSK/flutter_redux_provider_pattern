@@ -53,6 +53,9 @@ class HomePage extends StatelessWidget {
             ///
             /// さらにパフォーマンスを向上させたい場合は別Widgetに切り出して、
             /// 個別に更新をできるようにすればよいです。
+            ///
+            /// 興味がある方は以下をご覧ください。
+            /// https://github.com/HeavenOSK/flutter_redux_provider_pattern/blob/more-performance-optimize/lib/pages/home_page/home_page.dart
             Text(
               '${model.counter}',
               style: Theme.of(context).textTheme.display1,
