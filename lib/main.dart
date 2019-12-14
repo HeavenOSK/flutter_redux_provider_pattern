@@ -8,17 +8,11 @@ import 'redux/redux.dart';
 
 void main() {
   runApp(
-    /// Providerを使って、AppStateを保持するStoreを配置しています。
     Provider(
       create: (context) => Store<AppState>(
-        /// AppStateを更新するためのReducerを設定します。
         appReducer,
-
-        /// AppStateの初期状態を設定します。
         initialState: AppState.initialize(),
         middleware: [
-          /// counterの加算・減算処理を行うmiddlewareを配置します。
-          /// リスト内で展開するために、[...]　記法を使用しています。
           ...counterMiddleware(),
         ],
       ),
