@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 /// Reduxで扱う状態のクラスです。AppStateと名付けるのが通例です。
 /// Reduxでは一度インタンス化した[AppState]を改変しないため、@immutableアノテーションをつけています。
 ///
-/// [Store]が保持する状態を更新したい時は、[copyWith]メソッドを用いて新たな[AppState]インスタンスを作成します。
+/// Storeが保持する状態を更新したい時は、[copyWith]メソッドを用いて新たな[AppState]インスタンスを作成します。
 @immutable
 class AppState {
   /// [AppState]のコンストラクタは、[_](アンダーバー)で宣言しています。

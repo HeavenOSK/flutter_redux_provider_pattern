@@ -3,7 +3,7 @@ import 'package:redux/redux.dart';
 import '../app_state.dart';
 import 'counter_reducer.dart';
 
-/// [combineReducer]を用いて複数のReducerを束ねて１つのReducerにします。
+/// combineReducersを用いて複数のReducerを束ねて１つのReducerにします。
 ///
 /// 同じStateを更新するReducerであれば、何層になってcombineReducersで対応できますので、
 /// すべてのReducerを同じState型を指定するようにします。
