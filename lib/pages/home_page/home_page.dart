@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// [ChangeNotifier]に設定した[Model]を取得します。
-    final model = Provider.of<Model>(context);
+    final model = Provider.of<Model>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Demo of Reudx with Provider'),
@@ -44,22 +44,11 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
+          children: const [
+            Text(
               'You have pushed the button this many times:',
             ),
-
-            /// [Model#counter]の値を取得して表示しています。
-            ///
-            /// さらにパフォーマンスを向上させたい場合は別Widgetに切り出して、
-            /// 個別に更新をできるようにすればよいです。
-            ///
-            /// 興味がある方は以下をご覧ください。
-            /// https://github.com/HeavenOSK/flutter_redux_provider_pattern/blob/more-performance-optimize/lib/pages/home_page/home_page.dart
-            Text(
-              '${model.counter}',
-              style: Theme.of(context).textTheme.display1,
-            ),
+            _CounterText(),
           ],
         ),
       ),
@@ -104,6 +93,27 @@ class HomePage extends StatelessWidget {
           color: Colors.white,
         ),
       ),
+    );
+  }
+}
+
+/// [Model#counter]の値を取得して表示しています。
+///
+/// 更新したい箇所だけ別Widgetに切り出し、内部で[Model]を取得するように
+/// する、というのが[ChangeNotifier] & [ChangeNotifierProvider] を
+/// 使用する際の定石です。
+///
+/// こうすることで、[Model.counter]が更新され[Model]が[ChangeNotifier.notifyListeners]を
+/// 呼び出した際には、以下の切り出したWidgetだけに更新がかかるようになります。
+class _CounterText extends StatelessWidget {
+  const _CounterText({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final model = Provider.of<Model>(context);
+    return Text(
+      '${model.counter}',
+      style: Theme.of(context).textTheme.display1,
     );
   }
 }
